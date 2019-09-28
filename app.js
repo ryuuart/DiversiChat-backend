@@ -3,7 +3,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser'); 
 const port = 4000;
+const cors = require('cors')
 
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -26,7 +28,8 @@ app.get("/messages", (req, res) => {
 
 app.post("/add-chat", (req, res) => {
     let data = req.body;
-    db.chatRef.doc("item").set(data).then(response => {
+    console.log(data);
+    db.chatRef.doc().set(data).then(response => {
         res.send(200);
     });
 });
