@@ -16,5 +16,10 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore(); 
 let chatRef = db.collection('chat');
+let chatRefEngish = db.collection('chat-en');
+let chatRefSpanish = db.collection('chat-es');
+let chatRefChinese = db.collection('chat-zh');
+let chatRefJapanese = db.collection('chat-ja');
+let chatRefHindi = db.collection('chat-hi');
 
-module.exports = {chatRef};
+module.exports = {chatRef, chatRefEngish, chatRefSpanish, chatRefChinese, chatRefJapanese, chatRefHindi};
