@@ -15,23 +15,28 @@ app.get("/", (req, res) => {
 
 app.get("/messages", (req, res) => {
     let messages = [];
-    db.chatRef.get().then(snapshot => {
+    db.chatRef.orderBy("date").get().then(snapshot => {
         snapshot.forEach(doc => {
             messages.push(doc.data());
         });
         res.json(messages);
     }).catch(e => {
         console.log(e); 
-        res.status(400);
+        res.statusStatus(400);
     })
 })
 
 app.post("/add-chat", (req, res) => {
     let data = req.body;
-    console.log(data);
-    db.chatRef.doc().set(data).then(response => {
-        res.send(200);
-    });
+    if (!data.date) {
+        res.sendStatus(400);
+    } else {
+        console.log(data);
+        db.chatRef.doc(data.date).set(data).then(response => {
+            res.sendStatus(200);
+        });
+    }
+
 });
 
 app.listen(port, () => {
