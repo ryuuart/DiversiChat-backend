@@ -2,7 +2,7 @@ var firebase = require("firebase/app");
 require("firebase/firestore");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD1aL7a4g8k9Q_z1bQro7oYsnWw60-PvhU",
+    apiKey: process.env.FIREBASE_KEY,
     authDomain: "diversychat.firebaseapp.com",
     databaseURL: "https://diversychat.firebaseio.com",
     projectId: "diversychat",
